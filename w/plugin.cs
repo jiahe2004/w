@@ -28,21 +28,21 @@ namespace w
         public override string Name => "w";
         public override Version Version => new Version(1, 0, 0);
 
-        public Dictionary<StartTeam, List<ICustomRole>> Roles = new();
+        public Dictionary<StartTeam, List<ICustomRole>> Roles = new(); // 抄的
 
-        public plugin instance;
-        public Methods Methods { get; private set; } = null!;
+        public plugin instance;//似乎用不到
+        public Methods Methods { get; private set; } = null!;// 抄的
+
         private Hander.PlayerHandler playerHandler;
-        public bool chance { get; set; } = true;
-        public die_act CamoAbility { get; private set; }
+        public bool chance { get; set; } = true; // 火車頭的生成判定(一場生成一隻)
 
         public override void OnEnabled()
         {
             Log.Debug("OnEnabled started.");
-            instance = this;
-            Methods = new Methods(this);
             playerHandler = new Hander.PlayerHandler(this);
 
+
+            //載入自訂身分，通常會自動載入但確認一下
             CustomRole.RegisterRoles(false,new die_act());
 
 
@@ -51,6 +51,8 @@ namespace w
             PlayerEvents.TogglingNoClip += playerHandler.OnTogglingNoClip;
             ServerEvents.RoundStarted += playerHandler.OnRoundStarted;
 
+
+            //載入自訂效果，通常會自動載入但確認一下
             CustomRole.RegisterRoles(false, new w_boy());
             base.OnEnabled();
         }
@@ -59,6 +61,9 @@ namespace w
             PlayerEvents.UsingItem -= playerHandler.OnUsingItem;
             PlayerEvents.TogglingNoClip -= playerHandler.OnTogglingNoClip;
             ServerEvents.RoundStarted -= playerHandler.OnRoundStarted;
+
+            //卸載身分
+            CustomRole.UnregisterRoles();
         }
     }
     

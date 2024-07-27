@@ -19,7 +19,7 @@ namespace w
     using w.API;
     using w.effect;
 
-
+    // 火車頭自訂角色登入
     [CustomRole(RoleTypeId.Tutorial)]
     public class w_boy : CustomRole, ICustomRole
     {
@@ -51,6 +51,7 @@ namespace w
 
         public override List<CustomAbility>? CustomAbilities { get; set; } = new()
         {
+            //火車頭的出生自帶自訂效果
             new die_act()
         };
 
