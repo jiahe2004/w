@@ -15,11 +15,11 @@ using PlayerStatsSystem;
 
 namespace w.Hander
 {
-    internal class playerhabder
+    internal class PlayerHandler
     {
         public float ContactDamage { get; set; } = 500f;
         private plugin plugin;
-        public playerhabder(plugin plugin)
+        public PlayerHandler(plugin plugin)
         {
             this.plugin = plugin;
         }
@@ -55,7 +55,6 @@ namespace w.Hander
             }
 
         }
-
 
         public void OnTogglingNoClip(TogglingNoClipEventArgs ev)
         {
