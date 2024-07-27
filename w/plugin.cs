@@ -26,13 +26,13 @@ namespace w
     {
         public override string Author => "XuQingTW";
         public override string Name => "w";
-        public override Version Version => new Version(1,0,0);
+        public override Version Version => new Version(1, 0, 0);
 
         public Dictionary<StartTeam, List<ICustomRole>> Roles = new();
 
         public plugin instance;
         public Methods Methods { get; private set; } = null!;
-        private playerhabder playerhabder;
+        private Hander.PlayerHandler playerHandler;
         public bool chance { get; set; } = true;
         public die_act CamoAbility { get; private set; }
 
@@ -41,24 +41,24 @@ namespace w
             Log.Debug("OnEnabled started.");
             instance = this;
             Methods = new Methods(this);
-            playerhabder = new playerhabder(this);
+            playerHandler = new Hander.PlayerHandler(this);
 
             CustomRole.RegisterRoles(false,new die_act());
 
 
             Log.Debug("try to have hander.");
-            PlayerEvents.UsingItem += playerhabder.OnUsingItem;
-            PlayerEvents.TogglingNoClip += playerhabder.OnTogglingNoClip;
-            ServerEvents.RoundStarted += playerhabder.OnRoundStarted;
+            PlayerEvents.UsingItem += playerHandler.OnUsingItem;
+            PlayerEvents.TogglingNoClip += playerHandler.OnTogglingNoClip;
+            ServerEvents.RoundStarted += playerHandler.OnRoundStarted;
 
             CustomRole.RegisterRoles(false, new w_boy());
             base.OnEnabled();
         }
         public override void OnDisabled()
         {
-            PlayerEvents.UsingItem -= playerhabder.OnUsingItem;
-            PlayerEvents.TogglingNoClip -= playerhabder.OnTogglingNoClip;
-            ServerEvents.RoundStarted -= playerhabder.OnRoundStarted;
+            PlayerEvents.UsingItem -= playerHandler.OnUsingItem;
+            PlayerEvents.TogglingNoClip -= playerHandler.OnTogglingNoClip;
+            ServerEvents.RoundStarted -= playerHandler.OnRoundStarted;
         }
     }
     
