@@ -63,7 +63,7 @@ namespace w.Hander
             if (ev.Player.CustomInfo == "w_boy")
             {
                 Log.Debug("effect test");
-                if(RunRaycast(ev.Player,out RunRaycast hit))
+                if(RunRaycast(ev.Player,out RaycastHit hit))
                 {
                     Timing.RunCoroutine(runPlayer(ev.Player,hit));
                 }
