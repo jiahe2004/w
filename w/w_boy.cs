@@ -15,7 +15,7 @@ namespace w
     using MEC;
     using PlayerRoles;
     using System.Collections.Generic;
-    using w.;
+    using w;
     using w.API;
     using w.effect;
 
@@ -51,7 +51,7 @@ namespace w
 
         public override List<CustomAbility>? CustomAbilities { get; set; } = new()
         {
-            new die_act();
+            new die_act()
         };
 
     }

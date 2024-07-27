@@ -15,11 +15,11 @@ using PlayerStatsSystem;
 
 namespace w.Hander
 {
-    internal class playerhabder
+    internal class PlayerHandler
     {
         public float ContactDamage { get; set; } = 500f;
         private plugin plugin;
-        public playerhabder(plugin plugin)
+        public PlayerHandler(plugin plugin)
         {
             this.plugin = plugin;
         }
@@ -56,14 +56,13 @@ namespace w.Hander
 
         }
 
-
         public void OnTogglingNoClip(TogglingNoClipEventArgs ev)
         {
             Log.Debug($"{ev.Player.DisplayNickname} is toggling noclip ");
             if (ev.Player.CustomInfo == "w_boy")
             {
                 Log.Debug("effect test");
-                if(RunRaycast(ev.Player,out RunRaycast hit))
+                if(RunRaycast(ev.Player,out RaycastHit hit))
                 {
                     Timing.RunCoroutine(runPlayer(ev.Player,hit));
                 }
