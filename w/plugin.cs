@@ -36,6 +36,8 @@ namespace w
         private Hander.PlayerHandler playerHandler;
         public bool chance { get; set; } = true; // 火車頭的生成判定(一場生成一隻)
 
+        
+
         public override void OnEnabled()
         {
             Log.Debug("OnEnabled started.");

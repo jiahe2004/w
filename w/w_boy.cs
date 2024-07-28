@@ -38,6 +38,8 @@ namespace w
         public int Chance { get; set; } = 100;
         public StartTeam StartTeam { get; set; } = StartTeam.Other;
 
+        public w.effect.die_act die_Act { get; set; } = new();
+
 
         protected override void RoleAdded(Exiled.API.Features.Player player)
         {
@@ -45,15 +47,15 @@ namespace w
             Timing.CallDelayed(2.5f, () =>
             {
                 player.EnableEffect(EffectType.MovementBoost, x, 0f, true);
-
+                die_Act.UseAbility(player); //自訂效果套用
             });
         }
 
-        public override List<CustomAbility>? CustomAbilities { get; set; } = new()
+/*        public override List<CustomAbility>? CustomAbilities { get; set; } = new()
         {
             //火車頭的出生自帶自訂效果
             new die_act()
         };
-
+*/
     }
 }

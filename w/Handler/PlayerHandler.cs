@@ -49,7 +49,7 @@ namespace w.Hander
             while ((player.Position - hit.point).sqrMagnitude >= 2.5f)
             {
                 player.Position = Vector3.MoveTowards(player.Position, hit.point, 0.5f); //座標移動(平滑處理)
-                AdjustHeight(player);//高度檢測
+//                AdjustHeight(player);//高度檢測
                 yield return Timing.WaitForSeconds(0.00025f);//等待，在思考能不能刪除
             }
 
